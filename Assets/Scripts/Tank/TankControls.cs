@@ -61,7 +61,7 @@ namespace Tanks
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""WASD"",
                     ""id"": ""088e2342-7290-4c9c-b76e-92ca42aeec03"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
