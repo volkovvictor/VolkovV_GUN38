@@ -1,78 +1,147 @@
 ﻿// See https://aka.ms/new-console-template for more information
-// See https://aka.ms/new-console-template for more information
+using System;
 
-Console.WriteLine("Input two numbers");
-
-if (int.TryParse(Console.ReadLine(), out int firstNum))
+public class Program
 {
-    Console.WriteLine("First Number: " + firstNum);
-}
-else
-{
-    Console.WriteLine("Wrong number");
-    return;
-}
-
-if (int.TryParse(Console.ReadLine(), out int secondNum))
-{
-    Console.WriteLine("Second Number: " + secondNum);
-}
-else
-{
-    Console.WriteLine("Wrong number");
-    return;
-}
-
-Console.WriteLine("Choose the number of sign\n 1: +; 2: -; 3: /; 4: *; 5: &; 6: |; 7: ^;");
-
-if (int.TryParse(Console.ReadLine(), out int sign) && sign > 0 && sign < 8)
-{
-    string resultDecimal = null;
-    string resultDual = null;
-    string resultHexadecimal = null;
-
-    switch (sign)
+    public static void Main(string[] args)
     {
-        case 1:
-            Console.WriteLine("Value: {0} + {1} = {2}", firstNum, secondNum, firstNum + secondNum);
-            break;
-        case 2:
-            Console.WriteLine("Value: {0} - {1} = {2}", firstNum, secondNum, firstNum - secondNum);
-            break;
-        case 3:
-            Console.WriteLine("Value: {0} / {1} = {2}", firstNum, secondNum, firstNum / secondNum);
-            break;
-        case 4:
-            Console.WriteLine("Value: {0} * {1} = {2}", firstNum, secondNum, firstNum * secondNum);
-            break;
-        case 5:
-            resultDecimal = Convert.ToString(firstNum & secondNum);
-            resultDual = Convert.ToString((firstNum & secondNum), 2);
-            resultHexadecimal = Convert.ToString((firstNum & secondNum), 16);
+        //TASK A
 
-            Console.WriteLine("Value of {0} & {1}:\n decimal: {2}\n dual: {3}\n hexadecimal: {4}", firstNum, secondNum, resultDecimal, resultDual, resultHexadecimal);
+        // Task 1
+        int[] numsArray = new int[8] { 0, 1, 1, 2, 3, 5, 8, 13 };
 
-            break;
-        case 6:
-            resultDecimal = Convert.ToString(firstNum & secondNum);
-            resultDual = Convert.ToString((firstNum | secondNum), 2);
-            resultHexadecimal = Convert.ToString((firstNum | secondNum), 16);
+        Console.Write("numsArray = ");
+        for (int i = 0; i < numsArray.Length; i++)
+        {
+            int num = numsArray[i];
 
-            Console.WriteLine("Value of {0} | {1}:\n decimal: {2}\n dual: {3}\n hexadecimal: {4}", firstNum, secondNum, resultDecimal, resultDual, resultHexadecimal);
+            if (i < numsArray.Length - 1)
+            {
+                Console.Write(num + ", ");
+            } else
+            {
+                Console.WriteLine(num);
+            }
+        }
 
-            break;
-        case 7:
-            resultDecimal = Convert.ToString(firstNum & secondNum);
-            resultDual = Convert.ToString((firstNum ^ secondNum), 2);
-            resultHexadecimal = Convert.ToString((firstNum ^ secondNum), 16);
+        // Task 2
+        string[] months = new string[12] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "Jule",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        };
 
-            Console.WriteLine("Value of {0} ^ {1}:\n decimal: {2}\n dual: {3}\n hexadecimal: {4}", firstNum, secondNum, resultDecimal, resultDual, resultHexadecimal);
+        Console.WriteLine("months: ");
 
-            break;
-        default:
-            Console.WriteLine("Error!!! Wrong sign!!!");
-            break;
+        foreach (string month in months)
+        {
+            Console.WriteLine(month);
+        }
+
+        // Task 3
+        int[][] matrix = new int[3][] { new[] { 2, 3, 4 }, new[] { 4, 9, 16 }, new[] { 8, 27, 64 } };
+
+        Console.WriteLine("matrix: ");
+
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            Console.Write(i + 1 + " matrixArray: ");
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                int num = matrix[i][j];
+
+                if (j < matrix[i].Length - 1)
+                {
+                    Console.Write(num + ", ");
+                } else
+                {
+                    Console.WriteLine(num);
+                }
+            }
+        }
+
+        // Task 4
+        double[][] jaggedArray = new double[3][] {
+            new[] { 1d, 2d, 3d, 4d, 5d},
+            new[] { Math.E, Math.PI },
+            new[] { Math.Log10(1), Math.Log10(10), Math.Log10(100), Math.Log10(1000) }
+        };
+
+        Console.WriteLine("jaggedArray: ");
+
+        for (int i = 0; i < jaggedArray.Length; i++)
+        {
+            Console.Write(i + 1 + " jaggedArray: ");
+            for (int j = 0; j < jaggedArray[i].Length; j++)
+            {
+                double num = jaggedArray[i][j];
+
+                if (j < jaggedArray[i].Length - 1)
+                {
+                    Console.Write(num + ", ");
+                } else
+                {
+                    Console.WriteLine(num);
+                }
+            }
+        }
+
+        //TASK B
+
+        int[] array = { 1, 2, 3, 4, 5 };
+        int[] array2 = { 7, 8, 9, 10, 11, 12, 13 };
+
+        //TASK 5
+
+        Array.Copy(array, array2, 3);
+
+        Console.Write("Array2 = ");
+
+        for (int i = 0; i < array2.Length; i++)
+        {
+            int num = array2[i];
+
+            if (i < array2.Length - 1)
+            {
+                Console.Write(num + ", ");
+            }
+            else
+            {
+                Console.WriteLine(num);
+            }
+        }
+
+
+        //TASK 6
+
+        Array.Resize(ref array, array.Length * 2);
+
+        Console.Write("Array = ");
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            int num = array[i];
+
+            if (i < array.Length - 1)
+            {
+                Console.Write(num + ", ");
+            }
+            else
+            {
+                Console.WriteLine(num);
+            }
+        }
+
+
+        Console.ReadKey();
     }
-} else {
-    Console.WriteLine("Error!!! Wrong sign!!!");
 }
