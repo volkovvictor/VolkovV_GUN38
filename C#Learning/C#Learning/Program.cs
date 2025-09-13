@@ -5,142 +5,93 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        //TASK A
-
         // Task 1
-        int[] numsArray = new int[8] { 0, 1, 1, 2, 3, 5, 8, 13 };
+        int[] numsArray = new int[] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 };
 
-        Console.Write("numsArray = ");
-        for (int i = 0; i < numsArray.Length; i++)
+        Console.Write("First 10 numbers of numsArray: ");
+
+        for (int i = 0; i < 10; i++)
         {
-            int num = numsArray[i];
-
-            if (i < numsArray.Length - 1)
+            if (i == 9)
             {
-                Console.Write(num + ", ");
+                Console.WriteLine(numsArray[i]);
             } else
             {
-                Console.WriteLine(num);
+                Console.Write(numsArray[i] + ", ");
             }
         }
 
         // Task 2
-        string[] months = new string[12] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "Jule",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-        };
 
-        Console.WriteLine("months: ");
+        Console.Write("Even numbers up to 20: ");
 
-        foreach (string month in months)
+        for (int i = 2; i <= 20; i+=2)
         {
-            Console.WriteLine(month);
+            if (i == 20)
+            {
+                Console.WriteLine(i);
+            }
+            else
+            {
+                Console.Write(i + ", ");
+            }
         }
 
         // Task 3
-        int[][] matrix = new int[3][] { new[] { 2, 3, 4 }, new[] { 4, 9, 16 }, new[] { 8, 27, 64 } };
 
-        Console.WriteLine("matrix: ");
-
-        for (int i = 0; i < matrix.Length; i++)
+        Console.WriteLine("Multiplication table from 1 to 5: ");
+        for (int i = 0; i <= 5; i++)
         {
-            Console.Write(i + 1 + " matrixArray: ");
-            for (int j = 0; j < matrix[i].Length; j++)
+            if (i == 0)
             {
-                int num = matrix[i][j];
+                Console.Write("  | ");
 
-                if (j < matrix[i].Length - 1)
+                for (int j = 1; j <= 5; j++)
                 {
-                    Console.Write(num + ", ");
-                } else
+                    if (j == 5)
+                    {
+                        Console.WriteLine(j);
+                    } else
+                    {
+                        Console.Write(j + " | ");
+                    }
+                }
+
+                continue;
+            }
+
+            Console.Write(i + " | ");
+
+            for (int k = 1; k <= 5; k++)
+            {
+                int mult = k * i;
+
+                if (k == 5)
                 {
-                    Console.WriteLine(num);
+                    Console.WriteLine(mult);
+                }
+                else
+                {
+                    Console.Write(mult + " | ");
                 }
             }
         }
 
         // Task 4
-        double[][] jaggedArray = new double[3][] {
-            new[] { 1d, 2d, 3d, 4d, 5d},
-            new[] { Math.E, Math.PI },
-            new[] { Math.Log10(1), Math.Log10(10), Math.Log10(100), Math.Log10(1000) }
-        };
 
-        Console.WriteLine("jaggedArray: ");
+        string password = "qwerty";
+        string result;
 
-        for (int i = 0; i < jaggedArray.Length; i++)
-        {
-            Console.Write(i + 1 + " jaggedArray: ");
-            for (int j = 0; j < jaggedArray[i].Length; j++)
+        do {
+           Console.WriteLine("Input a password");
+           result = Console.ReadLine();
+
+            if (result == password)
             {
-                double num = jaggedArray[i][j];
-
-                if (j < jaggedArray[i].Length - 1)
-                {
-                    Console.Write(num + ", ");
-                } else
-                {
-                    Console.WriteLine(num);
-                }
+                Console.WriteLine("Success!");
             }
-        }
-
-        //TASK B
-
-        int[] array = { 1, 2, 3, 4, 5 };
-        int[] array2 = { 7, 8, 9, 10, 11, 12, 13 };
-
-        //TASK 5
-
-        Array.Copy(array, array2, 3);
-
-        Console.Write("Array2 = ");
-
-        for (int i = 0; i < array2.Length; i++)
-        {
-            int num = array2[i];
-
-            if (i < array2.Length - 1)
-            {
-                Console.Write(num + ", ");
-            }
-            else
-            {
-                Console.WriteLine(num);
-            }
-        }
-
-
-        //TASK 6
-
-        Array.Resize(ref array, array.Length * 2);
-
-        Console.Write("Array = ");
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            int num = array[i];
-
-            if (i < array.Length - 1)
-            {
-                Console.Write(num + ", ");
-            }
-            else
-            {
-                Console.WriteLine(num);
-            }
-        }
-
+            
+        } while(result != password);
 
         Console.ReadKey();
     }
